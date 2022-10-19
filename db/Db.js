@@ -5,6 +5,12 @@ class MyDb {
     this.ticket = [];
   }
 
+  //   create ticket
+  create() {}
+
+  //   sell multiple tickets
+  bulkCreate() {}
+
   //   return all tickets
   find() {}
 
@@ -16,6 +22,9 @@ class MyDb {
 
   // delete ticket
   deleteById() {}
+
+  //   raffle draw
+  draw() {}
 }
 
 const myDb = new MyDb();
