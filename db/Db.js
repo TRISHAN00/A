@@ -2,20 +2,29 @@ const Ticket = require("../models/Ticket");
 
 class MyDb {
   constructor() {
-    this.ticket = [];
+    this.tickets = [];
   }
 
   /**
    * Create Ticket
    * @param {string} username
    * @param {number} price
+   * @returns {Ticket} return a ticket object
    */
   create(username, price) {
-    const ticket = new Ticket();
+    const ticket = new Ticket(username, price);
+    this.tickets.push(ticket);
+    return ticket;
   }
 
-  //   sell multiple tickets
-  bulkCreate() {}
+  /**
+   * Create multiple tickets for a single user
+   * @param {string} username
+   * @param {number} price
+   * @param {number} quantity
+   * @return {Array<Ticket>}
+   */
+  bulkCreate(username, price, quantity) {}
 
   //   return all tickets
   find() {}
