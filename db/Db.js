@@ -64,8 +64,20 @@ class MyDD {
     return tickets;
   }
 
-  // update ticket
-  updateById() {}
+  /**
+   * update ticket
+   * @param {string} ticketId
+   * @param {{username: string, price: number}} ticketBody
+   * @return {Ticket}
+   */
+  updateById(ticketId, ticketBody) {
+    const ticket = this.findById(ticketId);
+    ticket.username = ticketBody.username ?? this.username;
+    ticket.price = ticketBody.price ?? this.price;
+    ticket.updatedAt = new Date();
+
+    return ticket;
+  }
 
   // delete ticket
   deleteById() {}
