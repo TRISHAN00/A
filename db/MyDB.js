@@ -1,6 +1,6 @@
 const Ticket = require("../models/Ticket");
 
-class MyDD {
+class MyDB {
   constructor() {
     this.tickets = [];
   }
@@ -26,7 +26,7 @@ class MyDD {
    */
   bulkCreate(username, price, quantity) {
     const result = [];
-    for (let i = 0; i < quantity.length; i++) {
+    for (let i = 0; i < quantity; i++) {
       const ticket = this.create(username, price);
       return ticket;
     }
@@ -79,7 +79,10 @@ class MyDD {
     return ticket;
   }
 
-  // delete ticket
+  /**
+   * delete ticket
+   * @param {string} ticketId
+   */
   deleteById(ticketId) {
     const index = this.tickets.findIndex((ticket) => ticket.id === ticketId);
 
@@ -92,8 +95,33 @@ class MyDD {
   }
 
   //   raffle draw
-  draw() {}
+  draw(winnerCount) {
+    let winnerIndexes = new Array(winnerCount);
+
+    let index = 0;
+
+    while (index < winnerCount) {
+      let winnerIndex = Math.floor(Math.random() * this.tickets.length);
+      console.log("Winner Index", winnerIndex);
+
+      if (!winnerIndexes.includes(winnerIndex)) {
+        winnerIndexes[index++] = winnerIndex;
+        continue;
+      }
+    }
+
+    // for (let i = 0; i < indexes.length; i++) {
+    //   let index = Math.floor(Math.random() * this.tickets.length);
+
+    //   while (indexes.includes(index)) {
+    //     let index = Math.floor(Math.random() * this.tickets.length);
+    //   }
+    //   indexes.push(index);
+    // }
+    const winners = winnerIndexes.map((index) => this.tickets[index]);
+    return winners;
+  }
 }
 
-const myDb = new MyDb();
-module.exports = myDb;
+const myDB = new MyDB();
+module.exports = myDB;

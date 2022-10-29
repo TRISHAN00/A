@@ -1,4 +1,5 @@
 const shortid = require("shortid");
+const myDb = require("../db/MyDB");
 class Ticket {
   /**
    * Constructor Function
