@@ -1,6 +1,6 @@
 const Ticket = require("../models/Ticket");
 
-class MyDb {
+class MyDD {
   constructor() {
     this.tickets = [];
   }
@@ -24,13 +24,35 @@ class MyDb {
    * @param {number} quantity
    * @return {Array<Ticket>}
    */
-  bulkCreate(username, price, quantity) {}
+  bulkCreate(username, price, quantity) {
+    const result = [];
+    for (let i = 0; i < quantity.length; i++) {
+      const ticket = this.create(username, price);
+      return ticket;
+    }
+    return result;
+  }
 
   //   return all tickets
-  find() {}
+  find() {
+    return this.tickets;
+  }
 
-  //   single ticket
-  findById() {}
+  /**
+   * single ticket
+   * @param {string} ticketId
+   */
+  findById(ticketId) {
+    const ticket = this.tickets.find(
+      /**
+       *
+       * @param {Ticket} ticket
+       */
+      (ticket) => ticket.id === ticketId
+    );
+
+    return ticket;
+  }
 
   // update ticket
   updateById() {}
