@@ -54,6 +54,16 @@ class MyDD {
     return ticket;
   }
 
+  findByUsername(username) {
+    const tickets = this.tickets.filter(
+      /**
+       * @param {Ticket} ticket
+       */
+      (ticket) => ticket.username === username
+    );
+    return tickets;
+  }
+
   // update ticket
   updateById() {}
 
